@@ -1,0 +1,27 @@
+{
+  "name": "merchant_wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watchAll --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fran-Cilia/MERCHANT_WALLET.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fran-Cilia/MERCHANT_WALLET/issues"
+  },
+  "homepage": "https://github.com/Fran-Cilia/MERCHANT_WALLET#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "supertest": "^6.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.0.2"
+  }
+}

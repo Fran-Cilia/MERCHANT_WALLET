@@ -2,10 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 
-const teaController = require('../controllers/teaController')
+const newTea = require('../controllers/teaController')
+const addCardController = require('../controllers/addCardController')
 
 router
     .route('/tea')
-    .post(teaController.newTea);
+    .post(newTea);
 
 module.exports = router;
