@@ -1,12 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1662511726215" clover="3.2.0">
-  <project timestamp="1662511726215" name="All files">
-    <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="4" coveredelements="4" complexity="0" loc="3" ncloc="3" packages="1" files="1" classes="1"/>
-    <file name="addCardController.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/controllers/addCardController.js">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-    </file>
+<coverage generated="1662611347372" clover="3.2.0">
+  <project timestamp="1662611347372" name="All files">
+    <metrics statements="61" coveredstatements="55" conditionals="8" coveredconditionals="6" methods="6" coveredmethods="5" elements="75" coveredelements="66" complexity="0" loc="61" ncloc="61" packages="5" files="8" classes="8"/>
+    <package name="src">
+      <metrics statements="16" coveredstatements="15" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <file name="databasepg.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/databasepg.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/index.js">
+        <metrics statements="11" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.controllers">
+      <metrics statements="18" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
+      <file name="retrieveCardController.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/controllers/retrieveCardController.js">
+        <metrics statements="15" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="teaController.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/controllers/teaController.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.helper">
+      <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="sql.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/helper/sql.js">
+        <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.routes">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="routes.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/routes/routes.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.services">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="DatabaseConfigService.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/services/DatabaseConfigService.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="PostgreReposirotyClientPool.js" path="/Users/franciscocilia/Desktop/MERCHANT_WALLET/src/services/PostgreReposirotyClientPool.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
