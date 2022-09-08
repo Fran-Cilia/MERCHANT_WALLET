@@ -17,7 +17,7 @@ module.exports.handler = async (req, res) => {
 
         const query = await executeQuery(pool,
             `SELECT * FROM cards
-        WHERE userfk=${user_id};`)
+        WHERE user_fk=${user_id};`)
         
         res.status(200).send(query);
     } catch (error) {
