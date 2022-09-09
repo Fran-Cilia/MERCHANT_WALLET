@@ -12,13 +12,12 @@ module.exports.handler = async (req, res) => {
             pool = await databaseClientService.buildPool()
         }
 
-        const query = await executeQuery(pool, `SELECT t1.transactionid as transaction_id, u1.username as recipient, u2.username as giver
+        const query = await executeQuery(pool, `SELECT t1.transaction_id as transaction_id, u1.user_name as recipient, u2.user_name as giver
         FROM transactions as t1
         INNER JOIN users as u1 
-            ON t1.recipientfk=u1.userid
+            ON t1.recipient_fk=u1.user_id
         INNER JOIN users as u2
-            ON t1.giverfk=u2.userid;
-        `)
+            ON t1.giver_fk=u2.user_id;`)
 
         console.log(query);
 
