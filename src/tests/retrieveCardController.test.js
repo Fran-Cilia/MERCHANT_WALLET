@@ -7,6 +7,8 @@ const { query } = require('express')
 
 describe('CONTROLLERS TEST', () => {
 
+    //TEST: retrieveCardController
+
     const card = [{
         card_id: 2,
         user_fk: 2,
@@ -18,14 +20,17 @@ describe('CONTROLLERS TEST', () => {
         cardholder_name:"Aldo Acosta"
     }]
 
-    it('GET /cards/:userid --> brings all cards that user has registered', async () => {
+
+    it('GET /cards/users/:user_id --> brings all cards that user has registered', async () => {
         const response = await request(app)
-            .get('/cards/2')
+            .get('/cards/users/2')
 
         expect(response.headers["content-type"]).toMatch(/json/);
         expect(response.status).toEqual(200);
         expect(response.body["rows"]).toEqual(card)
     })
+
+    //TEST: retrieveTransactionsController
 
     const transactions = [{
         transaction_id: 1,
@@ -51,4 +56,34 @@ describe('CONTROLLERS TEST', () => {
         expect(response.status).toEqual(200);
         expect(response.body["rows"]).toEqual(transactions)
     })
+
+    //TEST: ingestCardController 
+    
+    const newCard = {
+        userfk: 1,
+        cardType: 'Credit',
+        cardBank: 'Master Card',
+        cardNumber: '1234 5678 9123 4567',
+        expirationDate: '02/2023',
+        cvc: '989',
+        cardholderName:'Francisco Cilia'
+    }
+
+    it('POST /cards/users/:user_id --> saves users card in DB', async () => {
+        const response = await request (app)
+            .post('/cards/users/1')
+            .send(newCard)
+        
+        expect(response.headers["content-type"]).toMatch(/json/)
+        expect(response.status).toEqual(200);
+    })
+
+    it('POST /cards/users/:user_id --> sending improper JSON body recieves status 400', async () => {
+        const response = await request (app)
+            .post('/cards/users/1')
+            .send({userfk: 1})
+        
+        expect(response.status).toEqual(400);
+    })
+
 })
