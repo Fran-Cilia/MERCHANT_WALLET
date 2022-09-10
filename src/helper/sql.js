@@ -3,7 +3,7 @@ const executeQuery = async (pool, query) => {
       const client = await pool.connect();
       const { command, rowCount, rows } = await client.query(query);
       client.release();
-      console.log(command, rowCount);
+      //console.log(command, rowCount);
       return { rows, rowCount };
     } catch (e) {
       console.error(e);
