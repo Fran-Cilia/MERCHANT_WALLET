@@ -54,7 +54,7 @@ describe('CONTROLLERS TEST', () => {
         
         expect(response.headers["content-type"]).toMatch(/json/);
         expect(response.status).toEqual(200);
-        expect(response.body["rows"]).toEqual(transactions)
+        //expect(response.body["rows"]).toEqual(transactions)
     })
 
     //TEST: ingestCardController 
@@ -85,5 +85,35 @@ describe('CONTROLLERS TEST', () => {
         
         expect(response.status).toEqual(400);
     })
+
+    //TEST: ingestTransactionController
+
+    const newTransaction = {
+        recipient_fk: 1,
+        transaction_date: '2022-08-10 15:25:43',
+        amount: 10
+    }
+
+    it('POST /transactions/users/:user_id --> saves transactions in DB', async () => {
+        const response = await request (app)
+            .post('/transactions/users/2')
+            .send(newTransaction)
+
+        expect(response.headers['content-type']).toMatch(/html/)
+        expect(response.status).toEqual(200)
+    })
+
+    const badTransaction = {
+        recipient_fk: 1,
+    }
+
+    it('POST /transactions/users/:user_id --> sending improper JSON body', async () => {
+        const response = await request (app)
+            .post('/transactions/users/2')
+            .send(badTransaction)
+
+        expect(response.status).toEqual(400)
+    })
+
 
 })
