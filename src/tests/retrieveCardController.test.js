@@ -74,7 +74,7 @@ describe('CONTROLLERS TEST', () => {
             .post('/cards/users/1')
             .send(newCard)
         
-        expect(response.headers["content-type"]).toMatch(/json/)
+        expect(response.headers["content-type"]).toMatch(/html/)
         expect(response.status).toEqual(200);
     })
 

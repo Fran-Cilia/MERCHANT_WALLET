@@ -7,7 +7,6 @@ let pool;
 
 module.exports.handler = async (req, res) => {
     try {
-        console.log(pool);
         if (!pool) {
             pool = await databaseClientService.buildPool()
         }
@@ -19,7 +18,6 @@ module.exports.handler = async (req, res) => {
         INNER JOIN users as u2
             ON t1.giver_fk=u2.user_id;`)
 
-        console.log(query);
 
         res.status(200).send(query);
     } catch (error) {

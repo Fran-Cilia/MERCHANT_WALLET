@@ -9,7 +9,6 @@ let pool;
 
 module.exports.handler = async (req, res) => {
     try {
-        console.log(pool);
         if (!pool) {
             pool = await databaseClientService.buildPool();
         }
