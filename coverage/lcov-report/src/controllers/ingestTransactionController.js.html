@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/routes/routes.js</title>
+    <title>Code coverage report for src/controllers/ingestTransactionController.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/routes</a> routes.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> ingestTransactionController.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>12/14</span>
             </div>
         
             
@@ -94,27 +94,21 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,38 +116,44 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const DatabaseClientPoolService = require('../services/PostgreReposirotyClientPool')
+const { executeQuery } = require('../helper/sql')
 &nbsp;
-const router = express.Router();
 &nbsp;
-const { handler: retrieveCardController } = require('../controllers/retrieveCardController')
-const { handler: retrieveTransactionController } = require('../controllers/retrieveTransactionController')
-const { handler: ingestCardController } = require('../controllers/ingestCardController')
-const { handler: ingestTransactionController } = require('../controllers/ingestTransactionController')
-const { handler: deleteCardController } = require('../controllers/deleteCardController')
+const databaseClientService = new DatabaseClientPoolService()
+let pool;
 &nbsp;
-router
-    .route('/cards/users/:user_id')
-    .get(retrieveCardController)
+module.exports.handler = async (req, res) =&gt; {
+    try {
+        if (!pool) {
+            pool = await databaseClientService.buildPool()
+        }
 &nbsp;
-router 
-    .route('/transactions')
-    .get(retrieveTransactionController)
+        const { body, params: { user_id } } = req
 &nbsp;
-router
-    .route('/cards/users/:user_id')
-    .post(ingestCardController)
+        if (Object.keys(body).length !== 3) {
+            res.status(400).send("Fail");
+        }
+        else {
 &nbsp;
-router
-    .route('/transactions/users/:user_id')
-    .post(ingestTransactionController)
+            const query = executeQuery(pool, `INSERT INTO transactions (recipient_fk, giver_fk, transaction_date, amount)
+        VALUES (${body.recipient_fk}, ${user_id}, '${body.transaction_date}', ${body.amount});`)
 &nbsp;
-router
-    .route('/cards/users')
-    .delete(deleteCardController)
+            res.status(200).send('Ok')
+        }
+    } catch (error) {
+<span class="cstat-no" title="statement not covered" >        console.log(error);</span>
 &nbsp;
-module.exports = router;</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >        res.end(500)</span>
+    }
+}</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

@@ -115,5 +115,25 @@ describe('CONTROLLERS TEST', () => {
         expect(response.status).toEqual(400)
     })
 
+    //TEST: deleteCardController
 
+    const delCard = {
+        card_number: '1234 5678 9123 4567'
+    }
+
+    it('DELETE /cards/users --> deletes card from DB', async () => {
+        const response = await request (app)
+            .delete('/cards/users')
+            .send(delCard)
+
+        expect(response.status).toEqual(200);
+    })
+
+    it('DELETE /cards/users --> sending improper json body', async () => {
+        const response = await request (app)
+            .delete('/cards/users')
+            .send({bad_card: "not a real card"})
+
+        expect(response.status).toEqual(400);
+    })
 })
