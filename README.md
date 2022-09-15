@@ -8,7 +8,7 @@ This is a REST API, for Vertigo fund transferring application
 
 ## Purpose 
 
-The intentino of this API is to connect to DB and provide relevant information back to the client side.
+The intention of this API is to connect to DB and provide relevant information back to the client side.
 
 ## Requirements
 
@@ -25,6 +25,10 @@ The intentino of this API is to connect to DB and provide relevant information b
 ## Run API
 
 - `npm run start` to start the local server with watching
+
+## Run Tests
+
+- `npm test` to start tests
 
 ## Notable Dependencies
 
