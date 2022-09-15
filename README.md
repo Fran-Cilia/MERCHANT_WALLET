@@ -35,6 +35,7 @@ The intention of this API is to connect to DB and provide relevant information b
 - [express](https://github.com/expressjs/express) - The server fo handling and routing HTTP requests
 - [pg](https://github.com/brianc/node-postgres) - For PostgreSQL client
 - [dotenv](https://github.com/motdotla/dotenv) - To load environment variables from a .env file
+- [supertest](https://github.com/visionmedia/supertest) - To write tests
 
 ## Folder Structure
 
