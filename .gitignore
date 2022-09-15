@@ -1,0 +1,5 @@
+# ingore ALL .log files
+*.log
+
+#ignore ALL files in ANY directory named coverage
+coverage/
