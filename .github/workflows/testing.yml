@@ -1,17 +1,22 @@
-name: Super-Linter
+name: Unit Test
 
-on: push
+on: [pull_request]
 
 jobs: 
-  super-lint:
-    name: Lint code base
+  tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Run Super-Linter
-        uses: github/super-linter@v3.17.0
-        env: 
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrx.node-version }}
+        uses: actions/set-node@v1
+        with: 
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: tests
+        run: npm test
