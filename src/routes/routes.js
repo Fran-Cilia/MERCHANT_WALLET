@@ -13,7 +13,7 @@ router
     .get(retrieveCardController)
 
 router 
-    .route('/transactions')
+    .route('/transactions/:user_id')
     .get(retrieveTransactionController)
 
 router
