@@ -50,7 +50,7 @@ describe('CONTROLLERS TEST', () => {
 
     it('GET /transactions --> brings back all transaction stored in DB', async () => {
         const response = await request (app)
-            .get('/transactions')
+            .get('/transactions/1')
         
         expect(response.headers["content-type"]).toMatch(/json/);
         expect(response.status).toEqual(200);

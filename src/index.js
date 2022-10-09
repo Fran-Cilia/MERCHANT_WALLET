@@ -1,10 +1,12 @@
 const express = require('express');
 const routes = require('./routes/routes')
+const cors = require('cors')
 
 const PORT = 3010;
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.listen(process.env.PORT || 3010, (err) => {
     if (err) {
